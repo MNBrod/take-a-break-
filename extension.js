@@ -1,7 +1,22 @@
 // The module 'vscode' contains the VS Code extensibility API
 // Import the module and reference it with the alias vscode in your code below
 var vscode = require('vscode');
-const TimerInterval = 3000;
+let {
+    window,
+    commands,
+    Disposable,
+    ExtensionContext,
+    StatusBarAlignment,
+    StatusBarItem,
+    TextDocument
+} = require('vscode');
+const {
+    createTimer
+} = require('./src/timer');
+const {
+    createItem
+} = require('./src/statusTimer');
+const TimerInterval = 1000;
 
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
@@ -10,22 +25,19 @@ function activate(context) {
     // Use the console to output diagnostic information (console.log) and errors (console.error)
     // This line of code will only be executed once when your extension is activated
     console.log('Congratulations, your extension "take-a-break-" is now active!');
-
     // The command has been defined in the package.json file
     // Now provide the implementation of the command with  registerCommand
     // The commandId parameter must match the command field in package.json
-    var disposable = vscode.commands.registerCommand('extension.sayHello', function () {
-        vscode.window.showInformationMessage('Starting Take-A-Break');
-        let date = new Date();
-        var timer = setInterval(() => {
-            timerCallback(timer, date);
-        }, TimerInterval);
-        // The code you place here will be executed every time your command is executed
-
-        // Display a message box to the user
-        //vscode.window.showInformationMessage('Hello World!');
+    //let controller = new TimerController();
+    var disposable = vscode.commands.registerCommand('extension.startTimerBreak', function () {
+        // let mess = vscode.window.showInformationMessage('Starting Take-A-Break');
+        window.showInputBox({prompt: 'enter git commit message'})
+        .then(message => console.log(message));
+        let item = createItem();
+        const date = new Date();
+        let timer = createTimer(TimerInterval, date, item);
     });
-
+    // context.subscriptions.push(controller);
     context.subscriptions.push(disposable);
 }
 exports.activate = activate;
@@ -34,29 +46,21 @@ exports.activate = activate;
 function deactivate() {}
 exports.deactivate = deactivate;
 
-function timerCallback(timer, date) {
-    let now = new Date();
-    let diff = now.getTime() - date.getTime();
-    // console.log("date:", diff);
-    vscode.window.showInformationMessage(`Time Difference: ${makeTime(diff)}`);
-}
+// class TimerController {
+//     constructor() {
+//         this.subscriptions = [];
+//         this._disposable = Disposable.from(...this.subscriptions);
+//         window.onDidChangeActiveTextEditor(this._onEvent, this, this.subscriptions);
+//     }
 
-function makeTime(milli) {
-    let sec, minutes;
-    if (milli > 60000) {
-        console.log('60,000');
-        minutes = Math.floor(milli / 60000);
-        sec = Math.round((milli - (minutes * 60000)) / 1000);
-        if (sec < 10) sec = '0' + sec;
-        return `${minutes}:${sec}`;
-    }
-    if (milli > 1000) {
-        console.log('1000');
-        sec = Math.round(milli / 1000);
-        if (sec < 10) sec = '0' + sec;
-        return `0:${sec}`;
-    } else {
-        console.log('other');
-        return milli;
-    }
-}
+//     _onEvent () {
+//         console.log('hi');
+//         let item = createItem();
+//         const date = new Date();
+//         let timerTwo = createTimer(TimerInterval, date, item);
+//     }
+
+//     dispose () {
+//         this._disposable.dispose();
+//     }
+// }
