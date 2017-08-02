@@ -1,7 +1,17 @@
+let simpleGit = require('simple-git')();
+
 function timerCallback(date, item) {
   let now = new Date();
   // let temp = date.getTime() - 3590000;
   let diff = now.getTime() - date.getTime();
+  if (diff % 5000 < 50){
+    console.log('hi');
+    simpleGit.status((err, status) => {
+      if (err) console.error(err);
+      let message = `You haven't committed in a while!`;
+      console.log(status.not_added);
+    });
+  }
   // let diff = now.getTime() - temp;
   item.text = `Time Difference: ${makeTime(diff)}`;
 }

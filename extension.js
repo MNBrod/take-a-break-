@@ -1,6 +1,7 @@
 // The module 'vscode' contains the VS Code extensibility API
 // Import the module and reference it with the alias vscode in your code below
 var vscode = require('vscode');
+let simpleGit = require('simple-git');
 let {
     window,
     commands,
@@ -21,7 +22,6 @@ const TimerInterval = 1000;
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
 function activate(context) {
-
     // Use the console to output diagnostic information (console.log) and errors (console.error)
     // This line of code will only be executed once when your extension is activated
     console.log('Congratulations, your extension "take-a-break-" is now active!');
@@ -30,9 +30,6 @@ function activate(context) {
     // The commandId parameter must match the command field in package.json
     //let controller = new TimerController();
     var disposable = vscode.commands.registerCommand('extension.startTimerBreak', function () {
-        // let mess = vscode.window.showInformationMessage('Starting Take-A-Break');
-        window.showInputBox({prompt: 'enter git commit message'})
-        .then(message => console.log(message));
         let item = createItem();
         const date = new Date();
         let timer = createTimer(TimerInterval, date, item);
