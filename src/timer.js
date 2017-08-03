@@ -4,7 +4,7 @@ let {
   window
 } = require('vscode');
 
-function timerCallback(date, item) {
+function timerCallback(date, item, reset) {
   let now = new Date();
   // let temp = date.getTime() - 3590000;
   let diff = now.getTime() - date.getTime();
@@ -29,7 +29,7 @@ function timerCallback(date, item) {
                 console.log('commiting message: ', result);
                 simpleGit.commit(result, () => {
                   window.showInformationMessage('success! changes committed');
-                  date = new Date();
+                  reset(date = new Date());
                 });
               }
             });
