@@ -70,9 +70,9 @@ function makeTime(milli) {
   }
 }
 
-function createTimer(interval, date, item, reset) {
+function createTimer(interval, date, item) {
   let timer = setInterval(() => {
-    timerCallback(date, item, reset);
+    timerCallback(date, item, () => { date = new Date(); });
   }, interval);
   return timer;
 }
