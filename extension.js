@@ -17,7 +17,7 @@ const {
 const {
     createItem
 } = require('./src/statusTimer');
-const TimerInterval = 1000;
+const config = require('./takeABreakConfig');
 
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
@@ -32,7 +32,7 @@ function activate(context) {
     var disposable = vscode.commands.registerCommand('extension.startTimerBreak', function () {
         let item = createItem();
         let date = new Date();
-        let timer = createTimer(TimerInterval, date, item);
+        let timer = createTimer(config.timerTickRate, date, item);
     });
     // context.subscriptions.push(controller);
     context.subscriptions.push(disposable);
