@@ -1,15 +1,40 @@
 let simpleGit = require('simple-git')();
+let gitInput = require('./gitCommits');
+let {
+  window
+} = require('vscode');
 
 function timerCallback(date, item) {
   let now = new Date();
   // let temp = date.getTime() - 3590000;
   let diff = now.getTime() - date.getTime();
-  if (diff % 5000 < 50){
+  if (diff < 1100) {
     console.log('hi');
     simpleGit.status((err, status) => {
       if (err) console.error(err);
-      let message = `You haven't committed in a while!`;
-      console.log(status.not_added);
+      console.log(status);
+
+      if (status.modified.length !== 0) {
+        simpleGit.add(status.modified, () => {
+          console.log('Added ', status.modified);
+          let message = `You haven't committed in a while! All has been added for you.
+          If you want to commit, type a message! otherwise, submit an empty message`;
+          gitInput.createCommitInput()
+            .then((result, error) => {
+              console.log('result: ', result, ' error: ', error);
+              if (error) {
+                console.log('err', error);
+                console.error(error);
+              } else if (result.length !== 0) {
+                console.log('commiting message: ', result);
+                simpleGit.commit(message, () => {
+                  window.showInformationMessage('success! changes committed');
+                });
+              }
+            });
+        });
+      }
+
     });
   }
   // let diff = now.getTime() - temp;
