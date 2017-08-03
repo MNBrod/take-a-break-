@@ -41,15 +41,15 @@ function handleTimeUp (date, item, reset) {
   let now = new Date();
   // let temp = date.getTime() - 3590000;
   let diff = now.getTime() - date.getTime();
-  if (diff % config.gitCheckRate < 999) {
-    simpleGit.log([], (err, log) => {
-      if (err) console.error(err);
-      let temp = new Date(log.all[0].date);
-      if (now.getTime() - temp.getTime() < config.queryTickRate) {
-        reset();
-      }
-    });
-  }
+  // if (diff % config.gitCheckRate < 999) {
+  //   simpleGit.log([], (err, log) => {
+  //     if (err) console.error(err);
+  //     let temp = new Date(log.all[0].date);
+  //     if (now.getTime() - temp.getTime() < config.queryTickRate) {
+  //       reset();
+  //     }
+  //   });
+  // }
   if (diff % config.queryTickRate < 999) {
     simpleGit.status((err, status) => {
       if (err) console.error(err);
