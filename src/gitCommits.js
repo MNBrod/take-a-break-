@@ -1,11 +1,15 @@
-let {window} = require('vscode');
+let {
+  window
+} = require('vscode');
 let simpleGit = require('simple-git')();
 const config = require('../takeABreakConfig');
 const generateMessage = require('./messageParser');
 
 
 function createCommitInput(prompt) {
-  return window.showInputBox({prompt: prompt});
+  return window.showInputBox({
+    prompt: prompt
+  });
   //returns a promsise
 }
 
@@ -37,41 +41,50 @@ function makeTime(milli) {
 }
 
 
-function handleTimeUp (date, item, reset) {
+function handleTimeUp(date, item, reset) {
   let now = new Date();
   // let temp = date.getTime() - 3590000;
   let diff = now.getTime() - date.getTime();
-  if (diff % config.queryTickRate < 1000) {
-    console.log('hi');
-    simpleGit.status((err, status) => {
-      if (err) console.error(err);
-      console.log(status);
-      if (status.modified.length !== 0) {
-        simpleGit.add(status.modified.concat(status.not_added), () => {
-          console.log('Added ', status.modified);
-          const message = `You haven't committed in a while! All has been added for you.
+  if (diff % config.queryTickRate < 999) {
+    if (diff % config.gitCheckRate < 999) {
+      simpleGit.log([], (err, log) => {
+        if (err) console.error(err);
+        let temp = new Date(log.all[0].date);
+        if (now.getTime() - temp.getTime() > config.queryTickRate - 3000) {
+          simpleGit.status((err, status) => {
+            if (err) console.error(err);
+            console.log(status);
+            if (status.modified.length !== 0) {
+              simpleGit.add(status.modified.concat(status.not_added), () => {
+                console.log('Added ', status.modified);
+                const message = `You haven't committed in a while! All has been added for you.
           If you want to commit, type a message! otherwise, submit an empty message`;
-          createCommitInput(message)
-            .then((result, error) => {
-              if (error) {
-                console.log('err');
-                console.error(error);
-              } else if (result && result.length !== 0) {
-                result = generateMessage(result);
-                console.log('commiting message: ', result);
-                simpleGit.commit(result, () => {
-                  window.showInformationMessage('success! changes committed');
-                  reset();
-                });
-              }
-            });
-        });
-      }
-
-    });
+                createCommitInput(message)
+                  .then((result, error) => {
+                    if (error) {
+                      console.log('err');
+                      console.error(error);
+                    } else if (result && result.length !== 0) {
+                      result = generateMessage(result);
+                      console.log('commiting message: ', result);
+                      simpleGit.commit(result, () => {
+                        window.showInformationMessage('success! changes committed');
+                        reset();
+                      });
+                    }
+                  });
+              });
+            }
+          });
+        }
+      });
+    }
   }
   // let diff = now.getTime() - temp;
   item.text = `Time: ${makeTime(diff)}`;
 }
 
-module.exports = {createCommitInput, handleTimeUp};
+module.exports = {
+  createCommitInput,
+  handleTimeUp
+};
