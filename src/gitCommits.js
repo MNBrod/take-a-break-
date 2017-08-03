@@ -47,7 +47,7 @@ function handleTimeUp (date, item, reset) {
       if (err) console.error(err);
       console.log(status);
       if (status.modified.length !== 0) {
-        simpleGit.add(status.modified, () => {
+        simpleGit.add(status.modified.concat(status.not_added), () => {
           console.log('Added ', status.modified);
           const message = `You haven't committed in a while! All has been added for you.
           If you want to commit, type a message! otherwise, submit an empty message`;
