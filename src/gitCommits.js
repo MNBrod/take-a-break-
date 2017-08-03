@@ -1,7 +1,7 @@
 let {window} = require('vscode');
 let simpleGit = require('simple-git')();
-let gitInput = require('./gitCommits');
 const config = require('../takeABreakConfig');
+const generateMessage = require('./messageParser');
 
 
 function createCommitInput(prompt) {
@@ -51,12 +51,13 @@ function handleTimeUp (date, item, reset) {
           console.log('Added ', status.modified);
           const message = `You haven't committed in a while! All has been added for you.
           If you want to commit, type a message! otherwise, submit an empty message`;
-          gitInput.createCommitInput(message)
+          createCommitInput(message)
             .then((result, error) => {
               if (error) {
                 console.log('err');
                 console.error(error);
-              } else if (result.length !== 0) {
+              } else if (result && result.length !== 0) {
+                result = generateMessage(result);
                 console.log('commiting message: ', result);
                 simpleGit.commit(result, () => {
                   window.showInformationMessage('success! changes committed');
