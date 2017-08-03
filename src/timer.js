@@ -39,6 +39,7 @@ function timerCallback(date, item, reset) {
     });
   }
   // let diff = now.getTime() - temp;
+  console.log('DATE:', date, 'DIFF:', diff);
   item.text = `Time Difference: ${makeTime(diff)}`;
 }
 
