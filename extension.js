@@ -34,8 +34,15 @@ function activate(context) {
         let date = new Date();
         let timer = createTimer(config.timerTickRate, date, item);
     });
+    var disposable2 = vscode.commands.registerCommand('extension.gitCommit', function () {
+        // let commit = require('./src/gitCommits');
+        // commit();
+        window.showInformationMessage('Hi Snow!!');
+        console.log('Pressed!');
+    });
     // context.subscriptions.push(controller);
     context.subscriptions.push(disposable);
+    context.subscriptions.push(disposable2);
 }
 exports.activate = activate;
 

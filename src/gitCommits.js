@@ -72,6 +72,8 @@ function handleTimeUp (date, item, reset) {
                   window.showInformationMessage('success! changes committed');
                   reset();
                 });
+              } else {
+                config.queryTickRate = config.queryTickRate + 10000;
               }
             });
         });
@@ -82,4 +84,26 @@ function handleTimeUp (date, item, reset) {
   item.text = `Time: ${makeTime(diff)}`;
 }
 
-module.exports = {createCommitInput, handleTimeUp};
+function commit () {
+  simpleGit.add(status.modified.concat(status.not_added), () => {
+    console.log('Added ', status.modified);
+    const message = `You haven't committed in a while! All has been added for you.
+    If you want to commit, type a message! otherwise, submit an empty message`;
+    createCommitInput(message)
+      .then((result, error) => {
+        if (error) {
+          console.log('err');
+          console.error(error);
+        } else if (result && result.length !== 0) {
+          result = generateMessage(result);
+          console.log('commiting message: ', result);
+          simpleGit.commit(result, () => {
+            window.showInformationMessage('success! changes committed');
+          });
+        } else {
+          config.queryTickRate = config.queryTickRate + 10000;
+        }
+      });
+  });
+}
+module.exports = {createCommitInput, handleTimeUp, commit};
