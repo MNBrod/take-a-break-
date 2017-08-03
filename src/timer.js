@@ -8,20 +8,20 @@ function timerCallback(date, item) {
   let now = new Date();
   // let temp = date.getTime() - 3590000;
   let diff = now.getTime() - date.getTime();
-  if (diff < 1100) {
+  if (diff % 60000 < 1000) {
     console.log('hi');
     simpleGit.status((err, status) => {
+      console.log('err:', err, ' status:', status);
       if (err) console.error(err);
       console.log(status);
-
       if (status.modified.length !== 0) {
         simpleGit.add(status.modified, () => {
           console.log('Added ', status.modified);
-          let message = `You haven't committed in a while! All has been added for you.
+          const message = `You haven't committed in a while! All has been added for you.
           If you want to commit, type a message! otherwise, submit an empty message`;
-          gitInput.createCommitInput()
+          gitInput.createCommitInput(message)
             .then((result, error) => {
-              console.log('result: ', result, ' error: ', error);
+              //console.log('result: ', result, ' error: ', error);
               if (error) {
                 console.log('err', error);
                 console.error(error);

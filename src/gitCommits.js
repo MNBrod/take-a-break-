@@ -1,6 +1,6 @@
 let {window} = require('vscode');
-function createCommitInput() {
-  return window.showInputBox({prompt: 'enter git commit message'});
+function createCommitInput(prompt) {
+  return window.showInputBox({prompt: prompt});
   //returns a promsise
 }
 // window.showInputBox({prompt: 'enter git commit message'})
