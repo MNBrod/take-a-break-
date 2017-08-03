@@ -2,6 +2,7 @@ let {window} = require('vscode');
 let simpleGit = require('simple-git')();
 const config = require('../takeABreakConfig');
 const generateMessage = require('./messageParser');
+//q library
 
 
 function createCommitInput(prompt) {
