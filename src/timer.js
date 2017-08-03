@@ -29,8 +29,7 @@ function timerCallback(date, item, reset) {
                 console.log('commiting message: ', result);
                 simpleGit.commit(result, () => {
                   window.showInformationMessage('success! changes committed');
-                  date = new Date();
-                  // comment
+                  reset();
                 });
               }
             });
@@ -71,8 +70,9 @@ function makeTime(milli) {
 }
 
 function createTimer(interval, date, item) {
-  let timer = setInterval(() => {
+  const timer = setInterval(() => {
     timerCallback(date, item, () => { date = new Date(); });
+    // testCallback(date, () => { date = new Date(); });
   }, interval);
   return timer;
 }
@@ -93,3 +93,10 @@ module.exports = {
   createTimer,
   // Timer
 };
+
+function testCallback (date, reset) {
+  let thisDate = new Date();
+  console.log(thisDate - date);
+  reset();
+
+}
