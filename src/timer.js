@@ -8,7 +8,7 @@ function timerCallback(date, item) {
   let now = new Date();
   // let temp = date.getTime() - 3590000;
   let diff = now.getTime() - date.getTime();
-  if (diff % 60000 < 1000) {
+  if (diff % 30000 < 1000) {
     console.log('hi');
     simpleGit.status((err, status) => {
       console.log('err:', err, ' status:', status);

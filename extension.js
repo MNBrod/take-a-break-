@@ -31,7 +31,7 @@ function activate(context) {
     //let controller = new TimerController();
     var disposable = vscode.commands.registerCommand('extension.startTimerBreak', function () {
         let item = createItem();
-        const date = new Date();
+        let date = new Date();
         let timer = createTimer(TimerInterval, date, item);
     });
     // context.subscriptions.push(controller);
