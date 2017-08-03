@@ -32,7 +32,7 @@ function activate(context) {
     var disposable = vscode.commands.registerCommand('extension.startTimerBreak', function () {
         let item = createItem();
         let date = new Date();
-        let timer = createTimer(TimerInterval, date, item, (newDate) => { date = newDate; });
+        let timer = createTimer(TimerInterval, date, item, () => { date = new Date(); });
     });
     // context.subscriptions.push(controller);
     context.subscriptions.push(disposable);

@@ -29,7 +29,7 @@ function timerCallback(date, item, reset) {
                 console.log('commiting message: ', result);
                 simpleGit.commit(result, () => {
                   window.showInformationMessage('success! changes committed');
-                  reset(new Date());
+                  reset();
                 });
               }
             });
