@@ -8,7 +8,7 @@ function timerCallback(date, item, reset) {
   let now = new Date();
   // let temp = date.getTime() - 3590000;
   let diff = now.getTime() - date.getTime();
-  if (diff % 30000 < 1000) {
+  if (diff % 10000 < 1000) {
     console.log('hi');
     simpleGit.status((err, status) => {
       console.log('err:', err, ' status:', status);
@@ -29,7 +29,7 @@ function timerCallback(date, item, reset) {
                 console.log('commiting message: ', result);
                 simpleGit.commit(result, () => {
                   window.showInformationMessage('success! changes committed');
-                  reset();
+                  date = new Date();
                 });
               }
             });
