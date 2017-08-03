@@ -27,7 +27,7 @@ function timerCallback(date, item) {
                 console.error(error);
               } else if (result.length !== 0) {
                 console.log('commiting message: ', result);
-                simpleGit.commit(message, () => {
+                simpleGit.commit(result, () => {
                   window.showInformationMessage('success! changes committed');
                 });
               }
