@@ -1,6 +1,8 @@
 // The module 'vscode' contains the VS Code extensibility API
 // Import the module and reference it with the alias vscode in your code below
 var vscode = require('vscode');
+let timer;
+let on = false;
 let simpleGit = require('simple-git')();
 let {
     window,
@@ -32,7 +34,7 @@ function activate(context) {
     var disposable = vscode.commands.registerCommand('extension.startTimerBreak', function () {
         let item = createItem();
         let date = new Date();
-        let timer = createTimer(config.timerTickRate, date, item);
+        timer = createTimer(config.timerTickRate, date, item);
     });
     var disposable2 = vscode.commands.registerCommand('extension.gitCommit', function () {
         simpleGit.status((err, status) => {
@@ -46,6 +48,14 @@ function activate(context) {
               });
             }
         });
+    });
+    var disposable3 = vscode.commands.registerCommand('extension.stopTimerBreak', function () {
+        if (on) {clearInterval(timer);}
+        else if (!on) {
+            let item = createItem();
+            let date = new Date();
+            timer = createTimer(config.timerTickRate, date, item);
+        }
     });
     context.subscriptions.push(disposable);
     context.subscriptions.push(disposable2);

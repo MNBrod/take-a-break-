@@ -26,6 +26,10 @@
             {
                 "command": "extension.gitCommit",
                 "key": "cmd+shift+g"
+            },
+            {
+                "command": "extension.stopTimerBreak",
+                "key": "cmd-shift-r"
             }
         ]
     },
