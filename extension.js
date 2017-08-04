@@ -1,22 +1,10 @@
 // The module 'vscode' contains the VS Code extensibility API
 // Import the module and reference it with the alias vscode in your code below
 var vscode = require('vscode');
-let simpleGit = require('simple-git');
-let {
-    window,
-    commands,
-    Disposable,
-    ExtensionContext,
-    StatusBarAlignment,
-    StatusBarItem,
-    TextDocument
-} = require('vscode');
+let windowTimer;
 const {
-    createTimer
+    Timer
 } = require('./src/timer');
-const {
-    createItem
-} = require('./src/statusTimer');
 const config = require('./takeABreakConfig');
 
 // this method is called when your extension is activated
@@ -30,11 +18,12 @@ function activate(context) {
     // The commandId parameter must match the command field in package.json
     //let controller = new TimerController();
     var disposable = vscode.commands.registerCommand('extension.startTimerBreak', function () {
-        let item = createItem();
-        let date = new Date();
-        let timer = createTimer(config.timerTickRate, date, item);
+        windowTimer = new Timer(config.timerTickRate, new Date());
     });
-    // context.subscriptions.push(controller);
+    var disposable3 = vscode.commands.registerCommand('extension.stopTimerBreak', function () {
+            windowTimer.endTimer();
+    });
+    context.subscriptions.push(disposable3);
     context.subscriptions.push(disposable);
 }
 exports.activate = activate;
@@ -42,22 +31,3 @@ exports.activate = activate;
 // this method is called when your extension is deactivated
 function deactivate() {}
 exports.deactivate = deactivate;
-
-// class TimerController {
-//     constructor() {
-//         this.subscriptions = [];
-//         this._disposable = Disposable.from(...this.subscriptions);
-//         window.onDidChangeActiveTextEditor(this._onEvent, this, this.subscriptions);
-//     }
-
-//     _onEvent () {
-//         console.log('hi');
-//         let item = createItem();
-//         const date = new Date();
-//         let timerTwo = createTimer(TimerInterval, date, item);
-//     }
-
-//     dispose () {
-//         this._disposable.dispose();
-//     }
-// }

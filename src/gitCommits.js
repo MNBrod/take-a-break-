@@ -2,6 +2,7 @@ let {window} = require('vscode');
 let simpleGit = require('simple-git')();
 const config = require('../takeABreakConfig');
 const generateMessage = require('./messageParser');
+//q library
 
 
 function createCommitInput(prompt) {
@@ -71,6 +72,8 @@ function handleTimeUp (date, item, reset) {
                   window.showInformationMessage('success! changes committed');
                   reset();
                 });
+              } else {
+                config.queryTickRate = config.queryTickRate + 10000;
               }
             });
         });

@@ -11,7 +11,8 @@
         "Other"
     ],
     "activationEvents": [
-        "onCommand:extension.startTimerBreak"
+        "onCommand:extension.startTimerBreak",
+        "onCommand:extension.gitCommit"
     ],
     "main": "./extension",
     "contributes": {
@@ -19,6 +20,16 @@
             {
                 "command": "extension.startTimerBreak",
                 "title": "Take a Break!"
+            }
+        ],
+        "keybindings": [
+            {
+                "command": "extension.gitCommit",
+                "key": "cmd+shift+g"
+            },
+            {
+                "command": "extension.stopTimerBreak",
+                "key": "cmd-shift-r"
             }
         ]
     },
