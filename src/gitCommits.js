@@ -77,7 +77,10 @@ function handleTimeUp(date, item, reset) {
               });
             }
           });
-        } else {config.queryTickRate += 10000;}
+        } else {
+          window.showInformationMessage('nothing was added or committed');
+          config.queryTickRate += 10000;
+        }
       });
   }
   item.text = `Time: ${makeTime(diff)}`;
