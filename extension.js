@@ -1,24 +1,10 @@
 // The module 'vscode' contains the VS Code extensibility API
 // Import the module and reference it with the alias vscode in your code below
 var vscode = require('vscode');
-let timer;
-let on = false;
-let simpleGit = require('simple-git')();
-let {
-    window,
-    commands,
-    Disposable,
-    ExtensionContext,
-    StatusBarAlignment,
-    StatusBarItem,
-    TextDocument
-} = require('vscode');
+let windowTimer;
 const {
-    createTimer
+    Timer
 } = require('./src/timer');
-const {
-    createItem
-} = require('./src/statusTimer');
 const config = require('./takeABreakConfig');
 
 // this method is called when your extension is activated
@@ -32,37 +18,16 @@ function activate(context) {
     // The commandId parameter must match the command field in package.json
     //let controller = new TimerController();
     var disposable = vscode.commands.registerCommand('extension.startTimerBreak', function () {
-        let item = createItem();
-        let date = new Date();
-        timer = createTimer(config.timerTickRate, date, item);
-    });
-    var disposable2 = vscode.commands.registerCommand('extension.gitCommit', function () {
-        simpleGit.status((err, status) => {
-            if (err) console.error(err);
-            console.log(status);
-            if (status.modified.length !== 0) {
-              simpleGit.add(status.modified.concat(status.not_added), () => {
-                console.log('Added ', status.modified);
-                window.showInputBox()
-                .then(res => console.log(res));
-              });
-            }
-        });
+        windowTimer = new Timer(config.timerTickRate, new Date());
     });
     var disposable3 = vscode.commands.registerCommand('extension.stopTimerBreak', function () {
-        if (on) {clearInterval(timer);}
-        else if (!on) {
-            let item = createItem();
-            let date = new Date();
-            timer = createTimer(config.timerTickRate, date, item);
-        }
+            windowTimer.endTimer();
     });
+    context.subscriptions.push(disposable3);
     context.subscriptions.push(disposable);
-    context.subscriptions.push(disposable2);
 }
 exports.activate = activate;
 
 // this method is called when your extension is deactivated
 function deactivate() {}
 exports.deactivate = deactivate;
-
