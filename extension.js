@@ -1,7 +1,7 @@
 // The module 'vscode' contains the VS Code extensibility API
 // Import the module and reference it with the alias vscode in your code below
 var vscode = require('vscode');
-let simpleGit = require('simple-git');
+let simpleGit = require('simple-git')();
 let {
     window,
     commands,
@@ -35,10 +35,18 @@ function activate(context) {
         let timer = createTimer(config.timerTickRate, date, item);
     });
     var disposable2 = vscode.commands.registerCommand('extension.gitCommit', function () {
-        window.showInputBox()
-        .then(res => console.log(res));
+        simpleGit.status((err, status) => {
+            if (err) console.error(err);
+            console.log(status);
+            if (status.modified.length !== 0) {
+              simpleGit.add(status.modified.concat(status.not_added), () => {
+                console.log('Added ', status.modified);
+                window.showInputBox()
+                .then(res => console.log(res));
+              });
+            }
+        });
     });
-    // context.subscriptions.push(controller);
     context.subscriptions.push(disposable);
     context.subscriptions.push(disposable2);
 }
@@ -48,21 +56,3 @@ exports.activate = activate;
 function deactivate() {}
 exports.deactivate = deactivate;
 
-// class TimerController {
-//     constructor() {
-//         this.subscriptions = [];
-//         this._disposable = Disposable.from(...this.subscriptions);
-//         window.onDidChangeActiveTextEditor(this._onEvent, this, this.subscriptions);
-//     }
-
-//     _onEvent () {
-//         console.log('hi');
-//         let item = createItem();
-//         const date = new Date();
-//         let timerTwo = createTimer(TimerInterval, date, item);
-//     }
-
-//     dispose () {
-//         this._disposable.dispose();
-//     }
-// }
