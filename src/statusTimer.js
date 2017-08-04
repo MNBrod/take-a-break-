@@ -1,11 +1,6 @@
 let {
   window,
-  commands,
-  Disposable,
-  ExtensionContext,
   StatusBarAlignment,
-  StatusBarItem,
-  TextDocument
 } = require('vscode');
 
 function createItem() {

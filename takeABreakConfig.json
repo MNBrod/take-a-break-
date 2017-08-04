@@ -1,0 +1,13 @@
+{
+  "timerTickRate": 1000,
+  "queryTickRate": 102000,
+  "gitCheckRate": 10000,
+  "snippets": {
+    "a": "adds: ",
+    "r": "removes: ",
+    "f": "fixes: ",
+    "d": "docs: ",
+    "s": "styles: ",
+    "t": "tests: "
+  }
+}
