@@ -1,17 +1,37 @@
 const factors = {
   timeElapsed: 0,
-  fileDiff: 0,
   currentTime: 0,
   addedFiles: 0,
   modifiedFiles: 0,
 };
-const config = require('../takeABreakConfig');
+let brain = require('brain');
+const config = require('../takeABreakConfig.js');
 
-function shouldCommit(factors) {
-  let total;
-  total += factors.timeElapsed;
-  total += 3 * (factors.timeElapsed - factors.currentTime);
-  total += factors.addedFiles * 1000;
-  total += factors.modifiedFiles * 1000;
+/*
+time since last commit
+insertions
+deletions
+#files changed
+*/
 
+function makeTest(num) {
+  let result = [];
+  for (let i = num; i > 0; i--) {
+    result.push({
+      insertions: Math.random(),
+      deletions: Math.random(),
+      filesChanged: Math.random(),
+      time: Math.random()
+    });
+  }
+  return result;
+}
+
+function hashTime(timeInMinutes) {
+  if (timeInMinutes > 100) timeInMinutes = 100;
+  return Math.log10(timeInMinutes / 10);
+}
+function hashFilesChanged(num) {
+  if (num > 10) return 1;
+  return num / 10;
 }

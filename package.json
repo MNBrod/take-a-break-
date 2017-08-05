@@ -46,6 +46,7 @@
         "vscode": "^1.0.0"
     },
     "dependencies": {
+        "brain": "^0.7.0",
         "eslint-config-fullstack": "^3.0.0",
         "eslint-plugin-react": "^7.1.0",
         "simple-git": "^1.75.0"
