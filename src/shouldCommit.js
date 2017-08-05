@@ -35,3 +35,6 @@ function hashFilesChanged(num) {
   if (num > 10) return 1;
   return num / 10;
 }
+function hashInsertions(num) {
+
+}
