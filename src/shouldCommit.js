@@ -1,36 +1,6 @@
-const factors = {
-  timeElapsed: 0,
-  currentTime: 0,
-  addedFiles: 0,
-  modifiedFiles: 0,
-};
-let brain = require('brain');
 const config = require('../takeABreakConfig.js');
-
-/*
-time since last commit
-insertions + deletions
-#files changed
-*/
-
-// function makeTest(num) {
-//   let result = [];
-//   for (let i = 0; i < 1; i += 1 / num) {
-//     result.push({
-//       input: {
-//         insDel: Math.random(),
-//         filesChanged: Math.random(),
-//         time: Math.random()
-//       },
-//       output: {
-//         yes: 1
-//       }
-//     });
-//   }
-//   return result;
-// }
-
-// console.log(makeTest(40));
+const {makeNet} = require('./net/net');
+const simpleGit = require('simple-git')();
 
 function hashTime(timeInMinutes) {
   if (timeInMinutes > 100) timeInMinutes = 100;
@@ -51,11 +21,15 @@ function reverseHashFilesChanged(num) {
 }
 
 function hashInsDel(num) {
-  if (num < 30) num = 0;
-  if (num > 500) num = 500;
-  return Math.log10(num / 50);
+  if (num > 50) return 1;
+  return Math.log10(num / 5);
 }
 
 function reversehashInsDel(num) {
-  return Math.floor(Math.pow(10, num) * 50);
+  return Math.floor(Math.pow(10, num) * 5);
+}
+
+function shouldCommit() {
+  let net = makeNet();
+  simpleGit.status();
 }
