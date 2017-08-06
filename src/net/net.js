@@ -1,7 +1,7 @@
 let brain = require('brain');
 // let {cases} = require('./training/fortyTraining');
 let fs = require('fs');
-const netStore = './netJSON.json';
+const netStore = './net/netJSON.json';
 
 function readJSON(fileName) {
   let str = fs.readFileSync(fileName);
