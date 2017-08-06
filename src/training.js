@@ -1,9 +1,8 @@
 let tests = [{
     input: {
-      insertions: 0.14821708693817737,
-      deletions: 0.7628270601794502,
-      filesChanged: 0.9697356981687155,
-      time: 0.9612226768572689
+      insDel: 0.3148642348600572,
+      filesChanged: 0.6420539956812026,
+      time: 0.4463029069798776
     },
     output: {
       yes: 1
@@ -11,472 +10,397 @@ let tests = [{
   },
   {
     input: {
-      insertions: 0.9764238590050776,
-      deletions: 0.48937756341007854,
-      filesChanged: 0.1716322126013896,
-      time: 0.7275140335916057
+      insDel: 0.731821088276934,
+      filesChanged: 0.07590124614402649,
+      time: 0.4505742693912096
     },
     output: {
-      yes: 1,
+      yes: 1
     }
   },
   {
     input: {
-      insertions: 0.262692296364031,
-      deletions: 0.19550951078684808,
-      filesChanged: 0.8943005778505673,
-      time: 0.2437656626685374
+      insDel: 0.5214951315915504,
+      filesChanged: 0.44469089995739464,
+      time: 0.628590381936942
     },
     output: {
-      yes: 1,
-      no: 1
+      yes: 1
     }
   },
   {
     input: {
-      insertions: 0.5511534553413975,
-      deletions: 0.9958387835987395,
-      filesChanged: 0.9889514984960501,
-      time: 0.7587030223610356
+      insDel: 0.3583319831038627,
+      filesChanged: 0.852151138182601,
+      time: 0.46695288446267114
     },
     output: {
-      yes: 1,
-      no: 1
+      yes: 1
     }
   },
   {
     input: {
-      insertions: 0.9289973898766934,
-      deletions: 0.3023066802794754,
-      filesChanged: 0.4301108191465588,
-      time: 0.18633533119798673
+      insDel: 0.5575203832945594,
+      filesChanged: 0.9597974005096084,
+      time: 0.9100938478497764
     },
     output: {
-      yes: 1,
-      no: 1
+      yes: 1
     }
   },
   {
     input: {
-      insertions: 0.8773199446478857,
-      deletions: 0.8606426226313157,
-      filesChanged: 0.08339126036319588,
-      time: 0.973814455199145
+      insDel: 0.24748800046116903,
+      filesChanged: 0.10806866873640164,
+      time: 0.6074942639328103
     },
     output: {
-      yes: 1,
-      no: 1
+      yes: 1
     }
   },
   {
     input: {
-      insertions: 0.7365024346256588,
-      deletions: 0.751473787898808,
-      filesChanged: 0.10230134702418225,
-      time: 0.5686282935447866
+      insDel: 0.7599640789816327,
+      filesChanged: 0.8382861391325933,
+      time: 0.6726681702226565
     },
     output: {
-      yes: 1,
-      no: 1
+      yes: 1
     }
   },
   {
     input: {
-      insertions: 0.06764538991453084,
-      deletions: 0.1961750002422089,
-      filesChanged: 0.5348118636837218,
-      time: 0.1768387659384285
+      insDel: 0.7322777629741617,
+      filesChanged: 0.7932115512769478,
+      time: 0.29158011167990305
     },
     output: {
-      yes: 1,
-      no: 1
+      yes: 1
     }
   },
   {
     input: {
-      insertions: 0.6305034053283334,
-      deletions: 0.5981854325459752,
-      filesChanged: 0.21918425003109476,
-      time: 0.8784240791652669
+      insDel: 0.0,
+      filesChanged: 0.9675763864393598,
+      time: 0.9838220703180975
     },
     output: {
-      yes: 1,
-      no: 1
+      yes: 1
     }
   },
   {
     input: {
-      insertions: 0.82041336434245,
-      deletions: 0.7492734276845798,
-      filesChanged: 0.6179356358767698,
-      time: 0.8992629036516178
+      insDel: 0.5291852261313377,
+      filesChanged: 0.11048904856622288,
+      time: 0.7694807110487445
     },
     output: {
-      yes: 1,
-      no: 1
+      yes: 1
     }
   },
   {
     input: {
-      insertions: 0.3807254557761759,
-      deletions: 0.16643727417980947,
-      filesChanged: 0.4178670242711273,
-      time: 0.5142337978189171
+      insDel: 0.0,
+      filesChanged: 0.4852020003755968,
+      time: 0.7233304849675972
     },
     output: {
-      yes: 1,
-      no: 1
+      yes: 1
     }
   },
   {
     input: {
-      insertions: 0.22877620118298658,
-      deletions: 0.501497129223613,
-      filesChanged: 0.568386160208509,
-      time: 0.26719579898094903
+      insDel: 0.4962176416637516,
+      filesChanged: 0.13910706958807073,
+      time: 0.6787563813363744
     },
     output: {
-      yes: 1,
-      no: 1
+      yes: 1
     }
   },
   {
     input: {
-      insertions: 0.4398026175013594,
-      deletions: 0.7388723367738534,
-      filesChanged: 0.0492263707836369,
-      time: 0.3233107312917274
+      insDel: 0.6716239889946711,
+      filesChanged: 0.5468809344928631,
+      time: 0.6199680234008429
     },
     output: {
-      yes: 1,
-      no: 1
+      yes: 1
     }
   },
   {
     input: {
-      insertions: 0.6970846860870428,
-      deletions: 0.6535021910960215,
-      filesChanged: 0.924439547220048,
-      time: 0.5847772162027116
+      insDel: 0.0918554079681948,
+      filesChanged: 0.839253384723851,
+      time: 0.3958595830976255
     },
     output: {
-      yes: 1,
-      no: 1
+      yes: 1
     }
   },
   {
     input: {
-      insertions: 0.6457540987616346,
-      deletions: 0.4599025729758419,
-      filesChanged: 0.536624458539902,
-      time: 0.08478784814686025
+      insDel: 0.24393362450638034,
+      filesChanged: 0.32642871452330957,
+      time: 0.4203454809942804
     },
     output: {
-      yes: 1,
-      no: 1
+      yes: 1
     }
   },
   {
     input: {
-      insertions: 0.8455184592234783,
-      deletions: 0.7598178388073975,
-      filesChanged: 0.36348781982797607,
-      time: 0.6028752768009791
+      insDel: 0.39447055185075275,
+      filesChanged: 0.5614653341679972,
+      time: 0.8628808417791132
     },
     output: {
-      yes: 1,
-      no: 1
+      yes: 1
     }
   },
   {
     input: {
-      insertions: 0.7652003212595233,
-      deletions: 0.8361074672772917,
-      filesChanged: 0.5921958066851916,
-      time: 0.26597041002458544
+      insDel: 0.08875056430551154,
+      filesChanged: 0.14212553513285098,
+      time: 0.5461238031220796
     },
     output: {
-      yes: 1,
-      no: 1
+      yes: 1
     }
   },
   {
     input: {
-      insertions: 0.030898585732074046,
-      deletions: 0.041700215599812296,
-      filesChanged: 0.026342986645316424,
-      time: 0.5524321118582574
+      insDel: 0.4587042115480229,
+      filesChanged: 0.7919802812682131,
+      time: 0.5750407276593992
     },
     output: {
-      yes: 1,
-      no: 1
+      yes: 1
     }
   },
   {
     input: {
-      insertions: 0.10756545976223286,
-      deletions: 0.2694276845648267,
-      filesChanged: 0.0752597054995705,
-      time: 0.9181513925030094
+      insDel: 0.11139069317832617,
+      filesChanged: 0.4306453895420812,
+      time: 0.4690452931899507
     },
     output: {
-      yes: 1,
-      no: 1
+      yes: 1
     }
   },
   {
     input: {
-      insertions: 0.9209283312711445,
-      deletions: 0.7662902139290528,
-      filesChanged: 0.9226331542715127,
-      time: 0.5476233197066087
+      insDel: 0.013918157518898688,
+      filesChanged: 0.404069081070749,
+      time: 0.4720894188724407
     },
     output: {
-      yes: 1,
-      no: 1
+      yes: 1
     }
   },
   {
     input: {
-      insertions: 0.9278269799603829,
-      deletions: 0.1221885994580767,
-      filesChanged: 0.6269888076566126,
-      time: 0.4619931045425385
+      insDel: 0.14331351910011159,
+      filesChanged: 0.6100637999531386,
+      time: 0.7184089040490211
     },
     output: {
-      yes: 1,
-      no: 1
+      yes: 1
     }
   },
   {
     input: {
-      insertions: 0.45449499765783763,
-      deletions: 0.02716599728287794,
-      filesChanged: 0.5181333987001047,
-      time: 0.5625402996773254
+      insDel: 0.6760847606685902,
+      filesChanged: 0.7099436214543726,
+      time: 0.9729807451388217
     },
     output: {
-      yes: 1,
-      no: 1
+      yes: 1
     }
   },
   {
     input: {
-      insertions: 0.5420401675572872,
-      deletions: 0.09710012344544361,
-      filesChanged: 0.31247743961661967,
-      time: 0.29822701453732825
+      insDel: 0.47121688602684464,
+      filesChanged: 0.951113760003216,
+      time: 0.5220829172296972
     },
     output: {
-      yes: 1,
-      no: 1
+      yes: 1
     }
   },
   {
     input: {
-      insertions: 0.20057936293447276,
-      deletions: 0.41398125864445445,
-      filesChanged: 0.8094528450002985,
-      time: 0.48162016330333235
+      insDel: 0.3929094214187294,
+      filesChanged: 0.16790381992856518,
+      time: 0.6818113881946348
     },
     output: {
-      yes: 1,
-      no: 1
+      yes: 1
     }
   },
   {
     input: {
-      insertions: 0.920811385065913,
-      deletions: 0.6935145680520094,
-      filesChanged: 0.2006041470576223,
-      time: 0.8046570620598987
+      insDel: 0.0,
+      filesChanged: 0.8010358204586765,
+      time: 0.3411552408480518
     },
     output: {
-      yes: 1,
-      no: 1
+      yes: 1
     }
   },
   {
     input: {
-      insertions: 0.5060210764454771,
-      deletions: 0.049969274026441246,
-      filesChanged: 0.924712137878366,
-      time: 0.6155028627303747
+      insDel: 0.0,
+      filesChanged: 0.5825697138303851,
+      time: 0.6073606000165612
     },
     output: {
-      yes: 1,
-      no: 1
+      yes: 1
     }
   },
   {
     input: {
-      insertions: 0.9266253988497886,
-      deletions: 0.4169326853328259,
-      filesChanged: 0.5376479394861589,
-      time: 0.6282709249372311
+      insDel: 0.3478532977859543,
+      filesChanged: 0.406958305640035,
+      time: 0.7125882691298211
     },
     output: {
-      yes: 1,
-      no: 1
+      yes: 1
     }
   },
   {
     input: {
-      insertions: 0.6027598951904825,
-      deletions: 0.7789131469623753,
-      filesChanged: 0.7732499218323223,
-      time: 0.5769569203809473
+      insDel: 0.0,
+      filesChanged: 0.45751050295812634,
+      time: 0.9420969063306823
     },
     output: {
-      yes: 1,
-      no: 1
+      yes: 1
     }
   },
   {
     input: {
-      insertions: 0.014356332705653951,
-      deletions: 0.11171606971679715,
-      filesChanged: 0.6677887959847557,
-      time: 0.3688497896781793
+      insDel: 0.0,
+      filesChanged: 0.32075259769082853,
+      time: 0.43373038938224684
     },
     output: {
-      yes: 1,
-      no: 1
+      yes: 1
     }
   },
   {
     input: {
-      insertions: 0.3187067053231374,
-      deletions: 0.9979895434814832,
-      filesChanged: 0.9526329898873902,
-      time: 0.6501278061788445
+      insDel: 0.5084809684975031,
+      filesChanged: 0.09370302906297345,
+      time: 0.650398722108785
     },
     output: {
-      yes: 1,
-      no: 1
+      yes: 1
     }
   },
   {
     input: {
-      insertions: 0.09741278496730543,
-      deletions: 0.5665552754468026,
-      filesChanged: 0.4015276351128414,
-      time: 0.4404775630450686
+      insDel: 0.0,
+      filesChanged: 0.19102280215186518,
+      time: 0.40648633587183713
     },
     output: {
-      yes: 1,
-      no: 1
+      yes: 1
     }
   },
   {
     input: {
-      insertions: 0.10568129008047733,
-      deletions: 0.2921483726744325,
-      filesChanged: 0.17796456752922207,
-      time: 0.4133487298131957
+      insDel: 0.025200729368452413,
+      filesChanged: 0.13375788753730689,
+      time: 0.2534925156437031
     },
     output: {
-      yes: 1,
-      no: 1
+      yes: 1
     }
   },
   {
     input: {
-      insertions: 0.9946666649208877,
-      deletions: 0.7295604770648012,
-      filesChanged: 0.9259935444886473,
-      time: 0.007831910867860836
+      insDel: 0.19596951202225954,
+      filesChanged: 0.999861722416779,
+      time: 0.9220661986275658
     },
     output: {
-      yes: 1,
-      no: 1
+      yes: 1
     }
   },
   {
     input: {
-      insertions: 0.23661050661172456,
-      deletions: 0.6087423659301543,
-      filesChanged: 0.7613016763911153,
-      time: 0.6913308377570229
+      insDel: 0.28314785785611196,
+      filesChanged: 0.4525124972764447,
+      time: 0.3585175197366697
     },
     output: {
-      yes: 1,
-      no: 1
+      yes: 1
     }
   },
   {
     input: {
-      insertions: 0.29929117659184756,
-      deletions: 0.8441386493822176,
-      filesChanged: 0.3315225429302233,
-      time: 0.7850091653962303
+      insDel: 0.5741270313592339,
+      filesChanged: 0.6822914370057598,
+      time: 0.5500262169909274
     },
     output: {
-      yes: 1,
-      no: 1
+      yes: 1
     }
   },
   {
     input: {
-      insertions: 0.3381758464088962,
-      deletions: 0.5137265960232449,
-      filesChanged: 0.788201739383902,
-      time: 0.49197568868237584
+      insDel: 0.48693793832163235,
+      filesChanged: 0.5530586943107356,
+      time: 0.5915576859128371
     },
     output: {
-      yes: 1,
-      no: 1
+      yes: 1
     }
   },
   {
     input: {
-      insertions: 0.796204908219976,
-      deletions: 0.46186747226745783,
-      filesChanged: 0.8270480366799036,
-      time: 0.5643031646019474
+      insDel: 0.6807953863598781,
+      filesChanged: 0.14778176386311626,
+      time: 0.7718796193476392
     },
     output: {
-      yes: 1,
-      no: 1
+      yes: 1
     }
   },
   {
     input: {
-      insertions: 0.5496420908771438,
-      deletions: 0.5952538694445313,
-      filesChanged: 0.2818402913319933,
-      time: 0.18120211176033307
+      insDel: 0.6626522575247058,
+      filesChanged: 0.3725760581155366,
+      time: 0.7881555781800307
     },
     output: {
-      yes: 1,
-      no: 1
+      yes: 1
     }
   },
   {
     input: {
-      insertions: 0.10952093124907059,
-      deletions: 0.7475218431531672,
-      filesChanged: 0.618850709447136,
-      time: 0.4768439719738171
+      insDel: 0.23133464819199534,
+      filesChanged: 0.7932038717288787,
+      time: 0.6474721959653276
     },
     output: {
-      yes: 1,
-      no: 1
+      yes: 1
     }
   },
   {
     input: {
-      insertions: 0.45601765488425827,
-      deletions: 0.5462975880642655,
-      filesChanged: 0.9900750963310001,
-      time: 0.7908254382472817
+      insDel: 0.9060794352594437,
+      filesChanged: 0.5418840387042383,
+      time: 0.7440763295842969
     },
     output: {
-      yes: 1,
-      no: 1
+      yes: 1
     }
   }
 ];
+
+
 function hashTime(timeInMinutes) {
   if (timeInMinutes > 100) timeInMinutes = 100;
   return Math.log10(timeInMinutes / 10);
@@ -496,12 +420,12 @@ function reverseHashFilesChanged(num) {
 }
 
 function hashInsDel(num) {
-  if (num > 100) num = 100;
-  return Math.log10(num / 10);
+  if (num > 50) return 1;
+  return Math.log10(num / 5);
 }
 
 function reversehashInsDel(num) {
-  return Math.floor(Math.pow(10, num) * 10);
+  return Math.floor(Math.pow(10, num) * 5);
 }
 
 function convertTests(tests) {
@@ -511,9 +435,21 @@ function convertTests(tests) {
 
 
                  Time: ${reverseHashTime(tests[i].input.time)}
-                 Deletions: ${reverseInsDel(tests[i].input.deletions)}
-                 Insetions: ${reverseInsDel(tests[i].input.insertions)}
+                 insDel: ${reversehashInsDel(tests[i].input.insDel)}
                  Files Changed: ${reverseHashFilesChanged(tests[i].input.filesChanged)}\n`);
   }
 }
-convertTests(tests);
+//convertTests(tests);
+let yesNo = [1, 1, 1, 0, 1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 1, 1, 1, 1, 0, 1];
+
+// console.log([1, 1, 1, 0, 1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 1, 1, 1, 1, 0, 1].length);
+
+
+function fillInTests (testArr, arr) {
+  for (let i = 0; i < testArr.length; i++) {
+    testArr[i].output = arr[i] === 1 ? {yes: 1} : {no: 1};
+  }
+  console.log(tests);
+}
+
+fillInTests(tests, yesNo);
