@@ -23,10 +23,10 @@ function shouldCommit(time) {
   simpleGit.diff(['--stat'], (err, result) => {
     if (err) {
       console.error(err);
-    } else {
+    } else if (result.length > 4) {
       console.log('result: \n', result);
       let arr = result.split('\n');
-      let line;
+      let line = '';
       arr.forEach(val => {
         if (val.indexOf('file changed') !== -1) line = val;
       });

@@ -1,7 +1,6 @@
 var vscode = require('vscode');
 const fs = require('fs');
 const simpleGit = require('simple-git')();
-const jsonEdit = require('./src/jsonParser.js');
 let windowTimer;
 const fileName = './takeABreakConfig.json';
 const {

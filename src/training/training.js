@@ -452,4 +452,8 @@ function fillInTests (testArr, arr) {
   console.log(tests);
 }
 
-fillInTests(tests, yesNo);
+// fillInTests(tests, yesNo);
+
+console.log(reverseHashTime(hashTime(10)));
+console.log(reversehashInsDel(hashInsDel(10)));
+console.log(reverseHashFilesChanged(hashFilesChanged(10)));
