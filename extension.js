@@ -1,6 +1,6 @@
 var vscode = require('vscode');
 const fs = require('fs');
-const jsonEdit = require('./src/jsonParser.js');
+const simpleGit = require('simple-git')();
 let windowTimer;
 const fileName = './takeABreakConfig.json';
 const {
@@ -14,8 +14,9 @@ function activate(context) {
         windowTimer = new Timer(config.timerTickRate, new Date());
     });
     var disposable3 = vscode.commands.registerCommand('extension.stopTimerBreak', function () {
-            windowTimer.endTimer();
-            vscode.commands.executeCommand('extension.startTimerBreak');
+            // windowTimer.endTimer();
+            // vscode.commands.executeCommand('extension.startTimerBreak');
+            simpleGit.diff(['--stat'], (err, result) => console.log(result, err));
     });
     context.subscriptions.push(disposable3);
     context.subscriptions.push(disposable);

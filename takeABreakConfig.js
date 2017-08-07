@@ -1,6 +1,6 @@
 module.exports = {
 timerTickRate: 1000, //timer ticks once every second by default
-  queryTickRate: 10000, // how often the user is querired about committing
+  queryTickRate: 100000, // how often the user is querired about committing
   gitCheckRate: 10000, //how often program checks for new git-commits
   snippets: { //roughly ƒfollows karma conventions
     a: 'adds: ',

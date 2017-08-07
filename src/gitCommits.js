@@ -1,6 +1,7 @@
 let {
   window
 } = require('vscode');
+let shouldCommit = require('./shouldCommit');
 let simpleGit = require('simple-git')();
 const config = require('../takeABreakConfig');
 const generateMessage = require('./messageParser');
@@ -45,16 +46,9 @@ function makeTime(milli) {
 function handleTimeUp(date, item, reset) {
   let now = new Date();
   let diff = now.getTime() - date.getTime();
-  // if (diff % config.gitCheckRate < 999) {
-  //   simpleGit.log([], (err, log) => {
-  //     if (err) console.error(err);
-  //     let temp = new Date(log.all[0].date);
-  //     if (now.getTime() - temp.getTime() < config.queryTickRate) {
-  //       reset();
-  //     }
-  //   });
-  // }
-  if (diff % config.queryTickRate < 999) {
+  console.log(shouldCommit(diff / 60000));
+  if (shouldCommit(diff / 60000)) {
+  // if (diff % config.queryTickRate < 999) {
     const message = "You haven't committed in a while! All has been added for you. If you want to commit, type a message! otherwise, submit an empty message";
     createCommitInput(message)
       .then((result, error) => {
