@@ -30,6 +30,10 @@
             {
                 "command": "extension.stopTimerBreak",
                 "key": "cmd-shift-r"
+            },
+            {
+                "command": "extension.example",
+                "key": "cmd-shift-e"
             }
         ]
     },

@@ -24,8 +24,7 @@ function activate(context) {
         // vscode.commands.executeCommand('extension.startTimerBreak');
         // simpleGit.diff(['--stat'], (err, result) => console.log(result, err));
     });
-    var disposable2 = vscode.commands.registerCommand('extension.gitCommit', function () {
-        // vscode.commands.executeCommand('extension.startTimerBreak');
+    var disposable4 = vscode.commands.registerCommand('extension.example', function () {
         const message = "You haven't committed in a while! All has been added for you. If you want to commit, type a message! otherwise, submit an empty message";
         createCommitInput(message)
           .then((result, error) => {
@@ -52,8 +51,14 @@ function activate(context) {
           });
 
     });
-    context.subscriptions.push(disposable3);
+    var disposable2 = vscode.commands.registerCommand('extension.gitCommit', function () {
+        vscode.commands.executeCommand('extension.startTimerBreak');
+    });
     context.subscriptions.push(disposable);
+    context.subscriptions.push(disposable2);
+    context.subscriptions.push(disposable3);
+    context.subscriptions.push(disposable4);
+
 }
 exports.activate = activate;
 
