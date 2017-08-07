@@ -24,19 +24,17 @@ function shouldCommit(time) {
     if (err) {
       console.error(err);
     } else if (result.length > 4) {
-      console.log('result: \n', result);
       let arr = result.split('\n');
       let line = '';
       arr.forEach(val => {
-        if (val.indexOf('file changed') !== -1) line = val;
+        if (val.indexOf('files changed') !== -1 || val.indexOf('file changed') !== -1) line = val;
       });
-      console.log('line:', line);
       let insDel = 0;
       let filesChanged = 0;
       arr = line.split(',');
       arr.forEach(val => {
         let temp = val.split(' ');
-        if (temp[2] === 'file') {
+        if (temp[2] === 'file' || temp[2] === 'files') {
           filesChanged = +temp[1];
         } else if (temp[2] === 'insertions(+)') {
           insDel += +temp[1];
@@ -44,7 +42,7 @@ function shouldCommit(time) {
           (insDel += +temp[1]);
         }
       });
-      console.log(insDel, filesChanged);
+      console.log(`Checking with time: ${time}, insDel ${insDel}, changed: ${filesChanged}`);
       insDel = hashInsDel(insDel);
       filesChanged = hashFilesChanged(filesChanged);
       time = hashTime(time);
@@ -70,6 +68,6 @@ function testShouldCommit(insDel, filesChanged, time) {
   return result.yes > result.no;
 
 }
-console.log(testShouldCommit(60, 2, 10));
+// console.log(testShouldCommit(60, 2, 10));
 
 module.exports = shouldCommit;

@@ -46,20 +46,17 @@ function makeTime(milli) {
 function handleTimeUp(date, item, reset) {
   let now = new Date();
   let diff = now.getTime() - date.getTime();
-  console.log(shouldCommit(diff / 60000));
   if (shouldCommit(diff / 60000)) {
   // if (diff % config.queryTickRate < 999) {
     const message = "You haven't committed in a while! All has been added for you. If you want to commit, type a message! otherwise, submit an empty message";
     createCommitInput(message)
       .then((result, error) => {
         if (error) {
-          console.log('err');
           console.error(error);
         } else if (result && result.length !== 0) {
           result = generateMessage(result);
           simpleGit.status((err, status) => {
             if (err) console.error(err);
-            console.log(status);
             if (status.modified.length !== 0) {
               simpleGit.add(status.modified.concat(status.not_added), () => {
                 console.log('Added ', status.modified);
