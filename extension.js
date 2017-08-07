@@ -41,7 +41,6 @@ function activate(context) {
                     console.log('commiting message: ', result);
                     simpleGit.commit(result, () => {
                       window.showInformationMessage('success! changes committed');
-                      reset();
                     });
                   });
                 }
